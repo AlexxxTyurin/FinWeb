@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import 'bootstrap';
-import {Container, Row, Col} from "reactstrap";
+import {Container, Row, Col} from "react-bootstrap";
 
 
 class Day extends Component{

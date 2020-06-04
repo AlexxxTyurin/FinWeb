@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Scheduler from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/Sheduler.js';
 
 
 let monday = {day: 'Monday', classes:[
@@ -8,12 +9,30 @@ let monday = {day: 'Monday', classes:[
 ]};
 
 class Home extends Component{
+    constructor(props){
+        super(props);
+
+        if (this.props.location.state === undefined){
+            this.is_authenticated = false;
+            this.user = null;
+        }
+        else {
+            this.is_authenticated = this.props.location.state.is_authenticated;
+            this.user = this.props.location.state.user;
+        }
+
+    }
+
+    componentDidMount() {
+        if (this.is_authenticated === false || this.user === null){
+            this.props.history.push("/login");
+        }
+    }
+
     render(){
 
         return (
-            <h0>
-                Something
-            </h0>
+           <Scheduler/>
         )
     }
 }

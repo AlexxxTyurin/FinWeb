@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Timetable from "./Timetable";
 
-class Sheduler extends Component{
+class Scheduler extends Component{
     constructor(props){
         super(props);
 
@@ -54,4 +54,4 @@ class Sheduler extends Component{
         // )
 }
 
-export default Sheduler;
+export default Scheduler;

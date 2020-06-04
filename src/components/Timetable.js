@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Day from '/Users/alextyurin/Desktop/WebStorm_projects/project/src/components/Day.js';
+import Day from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/Day.js';
 import {Container, Row} from "react-bootstrap";
 
 class Timetable extends Component{

@@ -1,28 +1,62 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Link, Route, Redirect, Router} from 'react-router-dom';
+import {Route, Router, Switch} from 'react-router-dom';
 import LoginForm from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/LoginForm.js';
 import RegistrationForm from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/RegistrationForm.js';
-import Home from "./components/Home";
-import Routes from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/routes.js';
-import history from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/history.js';
+import Home from "/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/Home.js";
+import {createBrowserHistory} from 'history';
+import Links from "./components/Links";
+
 
 
 class App extends Component{
+  constructor(){
+      super();
+
+      this.state = {
+          loggedInStatus: "NOT_LOGGED_IN",
+          user: {}
+      };
+
+      this.history = createBrowserHistory();
+      this.handleLogin = this.handleLogin.bind(this);
+      // this.history.push("/home");
+
+      // const store = createStore();
+
+  }
+
+  handleLogin(data){
+      this.setState({
+          loggedInStatus: "LOGGED_IN",
+          user: data.user
+      })
+  }
+
   render(){
     return(
-        <BrowserRouter history={history}>
-            <div>
-                <Link to="/login">Log in</Link>
-                <Link to="register">Register </Link>
-                <Route path="/" component={App}>
-                    <Route exact={true} path="/login" component={LoginForm}/>
-                    <Route exact={true} path="/register" component={RegistrationForm}/>
-                    <Route exact={true} path="/home" component={Home}/>
-                </Route>
-            </div>
-        </BrowserRouter>
+        <Router history={this.history}>
+            <Switch>
+                <Route exact={true} path="/login" render = {props =>(
+                    <LoginForm
+                        history = {this.history}
+                    />
+                )}/>
+                <Route exact={true} path="/register" render={props =>(
+                    <RegistrationForm
+                        history = {this.history}
+                    />
+                )}/>
+                <Route exact={true} path="/home" render={props =>(
+                    <Home
+                        {...props}
+                    />
+                )}/>
+                <Route exact={true} path="/" render={props => (
+                    <Links/>
+                )}/>
+            </Switch>
+        </Router>
     )
   }
 }
