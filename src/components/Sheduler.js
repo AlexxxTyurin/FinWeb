@@ -23,10 +23,6 @@ class Scheduler extends Component{
         }
     }
 
-    getGroupId(){
-        var str = 'https://ruz.fa.ru/api/search?term=%20' + String(this.group_name) + '&type=group';
-    }
-
     componentDidMount() {
         var today = new Date();
         var date = today.getDate();
@@ -41,7 +37,6 @@ class Scheduler extends Component{
         this.finish_date = finish_date;
         this.start_date = start_date;
 
-        // alert(finish_date);
         var str = 'https://ruz.fa.ru/api/schedule/group/' + String(this.group_id) + '?start=' + start_date + "&" + finish_date + "&lng=1";
 
 
@@ -49,7 +44,6 @@ class Scheduler extends Component{
             .then(response => response.json())
             .then(result => this.setState({data: result, isFetching: false}));
     }
-
 
     render(){
         var {data, isFetching, error} = this.state;
@@ -61,7 +55,6 @@ class Scheduler extends Component{
             }
         }
 
-        // alert(JSON.stringify(data[0]));
 
         var schedule = [];
 

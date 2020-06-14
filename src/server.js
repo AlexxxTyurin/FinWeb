@@ -22,7 +22,7 @@ let connection = mysql.createConnection({
 });
 
 // Function gets the login of a user and checks, if he exists in a database
-async function checkUser(login){
+function checkUser(login){
     connection.query("SELECT * FROM Users WHERE LOGIN = ?", login, function (error, rows, fields) {
         if(JSON.stringify(rows) === '[]'){
             return true;
@@ -78,13 +78,35 @@ app.post('/api/register/', function (req, resp){
     let password = req.body.password;
     let group_name = req.body.group_name;
 
-    if (checkUser(login)){
-        console.log("Creting user");
-        connection.query("INSERT INTO Users VALUES (?, ?, ?)", [login, password, group_name]);
-    }
-    else {
-        console.log("Cannot create a user");
-    }
+    connection.query("SELECT * FROM Users WHERE LOGIN = ?", login, function (error, rows, fields) {
+        if(JSON.stringify(rows) === '[]'){
+            console.log("Creating user");
+            connection.query("INSERT INTO Users VALUES (?, ?, ?)", [login, password, group_name], function (error, rows, fields) {
+                if(!error){
+                    resp.send({status: "Success"});
+                }
+                else {
+                    resp.send({status: "No success"});
+                }
+            });
+
+        }
+        else {
+            resp.send({status: "No success"});
+        }
+    });
+
+    // if (checkUser(login)){
+    //     console.log("Creating user");
+    //     connection.query("INSERT INTO Users VALUES (?, ?, ?)", [login, password, group_name], function (error, rows, fields) {
+    //         if(!error){
+    //             resp.send("Success");
+    //         }
+    //     });
+    // }
+    // else {
+    //     console.log("Cannot create a user");
+    // }
 
 });
 

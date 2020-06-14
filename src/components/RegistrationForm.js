@@ -20,6 +20,7 @@ class RegistrationForm extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.switchToLogin = this.switchToLogin.bind(this);
+        this.changeSelect = this.changeSelect.bind(this);
     }
 
     switchToLogin(){
@@ -31,6 +32,10 @@ class RegistrationForm extends Component{
         let value = event.target.value;
 
         this.setState({[name]:value})
+    }
+
+    changeSelect(event, {value}){
+        this.setState({["group_name"]:value});
     }
 
     async handleSubmit(event) {
@@ -46,7 +51,13 @@ class RegistrationForm extends Component{
             body: body_, headers: headers
         };
 
-        await fetch('http://localhost:1337/api/register/', requestOptions);
+        await fetch('http://localhost:1337/api/register/', requestOptions)
+            .then(response => response.json())
+            .then(result => this.data = result);
+
+        if (this.data.status === "Success"){
+            this.props.history.push("/home", {user: this.state.login, is_authenticated: true, group_name: this.state.group_name});
+        }
 
         event.preventDefault();
 
@@ -89,6 +100,8 @@ class RegistrationForm extends Component{
                                 placeholder="Group name..."
                                 options={groups}
                                 name="group_name"
+                                value={this.state.group_name}
+                                onChange={this.changeSelect}
                             />
 
                             <Button content='Register' primary />

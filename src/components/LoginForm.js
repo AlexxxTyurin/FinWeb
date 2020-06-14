@@ -33,40 +33,37 @@ class LoginForm extends Component{
 
     async handleSubmit(event) {
 
-        // let headers = new Headers();
-        // headers.append("Content-Type", "application/json");
-        //
-        // let body_ = JSON.stringify({login: this.state.login, password: this.state.password});
-        //
-        // let requestOptions = {
-        //     method: 'POST',
-        //     body: body_, headers: headers
-        // };
-        //
-        // await fetch("http://localhost:1337/api/login", requestOptions)
-        //     .then(response => response.json())
-        //     .then(result => this.data = result);
-        //
-        // alert(JSON.stringify(this.data));
-        //
-        // if(JSON.stringify(this.data) === '[]'){
-        //     alert("Incorrect login or password");
-        // }
-        //
-        // else{
-        //     if(this.data[0]["PASSWORD"] === this.state.password){
-        //         alert("Something")
-        //     }
-        //     else {
-        //         alert("Incorrect login or password");
-        //     }
-        // }
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
 
-        if (this.state.login === "alexander" && this.state.password === "1234"){
-            alert("Success");
+        let body_ = JSON.stringify({login: this.state.login, password: this.state.password});
+
+        let requestOptions = {
+            method: 'POST',
+            body: body_, headers: headers
+        };
+
+        await fetch("http://localhost:1337/api/login", requestOptions)
+            .then(response => response.json())
+            .then(result => this.data = result);
+
+        var login = this.data[0]["LOGIN"];
+        var password = this.data[0]["PASSWORD"];
+        var group_name = this.data[0]["GROUP_NAME"];
+
+
+        if(JSON.stringify(this.data) === '[]'){
+            alert("Incorrect login or password");
         }
 
-        this.props.history.push("/home", {user: "alexander", is_authenticated: true, group_name: "ПИ3-2"});
+        else{
+            if(this.data[0]["PASSWORD"] === this.state.password){
+                this.props.history.push("/home", {user: login, is_authenticated: true, group_name: group_name});
+            }
+            else {
+                alert("Incorrect login or password");
+            }
+        }
 
         event.preventDefault();
     }
