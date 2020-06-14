@@ -19,25 +19,18 @@ class App extends Component{
       };
 
       this.history = createBrowserHistory();
-      this.handleLogin = this.handleLogin.bind(this);
-      // this.history.push("/home");
-
-      // const store = createStore();
-
   }
 
-  handleLogin(data){
-      this.setState({
-          loggedInStatus: "LOGGED_IN",
-          user: data.user
-      })
+  componentDidMount() {
+      document.body.style.backgroundColor = "#216367";
   }
+
 
   render(){
     return(
         <Router history={this.history}>
             <Switch>
-                <Route exact={true} path="/login" render = {props =>(
+                <Route exact={true} path="/" render = {props =>(
                     <LoginForm
                         history = {this.history}
                     />
@@ -52,9 +45,9 @@ class App extends Component{
                         {...props}
                     />
                 )}/>
-                <Route exact={true} path="/" render={props => (
-                    <Links/>
-                )}/>
+                {/*<Route exact={true} path="/" render={props => (*/}
+                {/*    <Links/>*/}
+                {/*)}/>*/}
             </Switch>
         </Router>
     )

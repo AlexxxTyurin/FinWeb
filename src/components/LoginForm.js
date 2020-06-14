@@ -66,7 +66,7 @@ class LoginForm extends Component{
             alert("Success");
         }
 
-        this.props.history.push("/home", {user: "alexander", is_authenticated: true});
+        this.props.history.push("/home", {user: "alexander", is_authenticated: true, group_name: "ПИ3-2"});
 
         event.preventDefault();
     }

@@ -1,5 +1,14 @@
 import React, {Component} from "react";
 import 'reactstrap';
+import {Button, Form, Grid, Segment} from "semantic-ui-react";
+import FormInput from "semantic-ui-react/dist/commonjs/collections/Form/FormInput";
+import Dropdown from "semantic-ui-react/dist/commonjs/modules/Dropdown";
+import Select from "semantic-ui-react/dist/commonjs/addons/Select";
+
+const groups = [
+    {key: "ПИ3-2", value: "ПИ3-2", text: "ПИ3-2"},
+    {key: "ПИ3-1", value: "ПИ3-1", text: "ПИ3-1"}
+];
 
 class RegistrationForm extends Component{
     constructor(props){
@@ -10,8 +19,12 @@ class RegistrationForm extends Component{
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.switchToLogin = this.switchToLogin.bind(this);
     }
 
+    switchToLogin(){
+        this.props.history.push("/")
+    }
 
     handleChange(event){
         let name = event.target.name;
@@ -41,18 +54,75 @@ class RegistrationForm extends Component{
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    <h0>Login</h0>
-                    <input type="text" name="login" value={this.state.login} onChange={this.handleChange} placeholder="Login"/>
-                    <h0>Password</h0>
-                    <input type="text" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
-                    <h0>Group name</h0>
-                    <input type="text" name="group_name" value={this.state.group_name} onChange={this.handleChange} placeholder="Group name"/>
-                    <input type="submit" value="Register"/>
-                </label>
-            </form>
+            <Segment placeholder textAlign="center" style={{width: "50%", margin: "25%", marginTop: "15%"}} >
+                <Grid columns={2} relaxed="very" stackable verticalAlign="middle">
+                    <Grid.Column style={{width: '50%', padding: "4%"}}>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Input
+                                type="text"
+                                style={{width: '50%'}}
+                                icon='user'
+                                iconPosition='left'
+                                label="Login"
+                                placeholder="Login..."
+                                value={this.state.login}
+                                onChange={this.handleChange}
+                                name="login"
+
+                            />
+
+                            <Form.Input
+                                style={{width: '50%'}}
+                                icon='lock'
+                                iconPosition='left'
+                                label='Password'
+                                type='password'
+                                placeholder="Password..."
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                name="password"
+                            />
+
+                            <Form.Select
+                                label="Group name"
+                                style={{width: "20%"}}
+                                placeholder="Group name..."
+                                options={groups}
+                                name="group_name"
+                            />
+
+                            <Button content='Register' primary />
+                        </Form>
+                    </Grid.Column>
+
+                    <Grid.Column verticalAlign='middle' style={{width: "20%"}}>
+                        <Button
+                            content='Log in'
+                            icon='sign in'
+                            size='big'
+                            style={{width: "200%"}}
+                            onClick={this.switchToLogin}
+                        />
+                    </Grid.Column>
+                </Grid>
+            </Segment>
         )
+
+
+
+        // return(
+        //     <form onSubmit={this.handleSubmit}>
+        //         <label>
+        //             <h0>Login</h0>
+        //             <input type="text" name="login" value={this.state.login} onChange={this.handleChange} placeholder="Login"/>
+        //             <h0>Password</h0>
+        //             <input type="text" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+        //             <h0>Group name</h0>
+        //             <input type="text" name="group_name" value={this.state.group_name} onChange={this.handleChange} placeholder="Group name"/>
+        //             <input type="submit" value="Register"/>
+        //         </label>
+        //     </form>
+        // )
     }
 }
 

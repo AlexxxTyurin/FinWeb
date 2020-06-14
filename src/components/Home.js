@@ -19,20 +19,25 @@ class Home extends Component{
         else {
             this.is_authenticated = this.props.location.state.is_authenticated;
             this.user = this.props.location.state.user;
+            this.group_name = this.props.location.state.group_name;
         }
 
-    }
-
-    componentDidMount() {
         if (this.is_authenticated === false || this.user === null){
-            this.props.history.push("/login");
+            this.props.history.push("/");
         }
+
     }
+
+    // componentDidMount() {
+    //     if (this.is_authenticated === false || this.user === null){
+    //         this.props.history.push("/");
+    //     }
+    // }
 
     render(){
 
         return (
-           <Scheduler/>
+           <Scheduler group_name={this.group_name}/>
         )
     }
 }
