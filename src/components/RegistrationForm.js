@@ -6,8 +6,8 @@ import Dropdown from "semantic-ui-react/dist/commonjs/modules/Dropdown";
 import Select from "semantic-ui-react/dist/commonjs/addons/Select";
 
 const groups = [
-    {key: "ПИ3-2", value: "ПИ3-2", text: "ПИ3-2"},
-    {key: "ПИ3-1", value: "ПИ3-1", text: "ПИ3-1"}
+    {key: "ПИ17-2", value: "ПИ17-2", text: "ПИ17-2"},
+    {key: "ПИ17-1", value: "ПИ17-1", text: "ПИ17-1"}
 ];
 
 class RegistrationForm extends Component{

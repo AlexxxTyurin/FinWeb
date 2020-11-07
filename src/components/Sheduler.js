@@ -15,10 +15,11 @@ class Scheduler extends Component{
         this.group_name = this.props.group_name;
         this.group_id = null;
 
-        if (this.group_name === "ПИ3-2"){
+        if (this.group_name === "ПИ17-2"){
             this.group_id = 8892;
         }
-        else if (this.group_name === "ПИ3-1"){
+
+        else if (this.group_name === "ПИ17-1"){
             this.group_id = 8891;
         }
     }

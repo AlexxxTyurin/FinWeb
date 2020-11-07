@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import 'reactstrap';
 import {withRouter} from "react-router-dom";
-import {Button, Divider, Form, Grid, Segment} from "semantic-ui-react";
+import {Button, Form, Grid, Segment} from "semantic-ui-react";
 import FormInput from "semantic-ui-react/dist/commonjs/collections/Form/FormInput";
 
 const fetch = require('node-fetch');
@@ -47,17 +47,17 @@ class LoginForm extends Component{
             .then(response => response.json())
             .then(result => this.data = result);
 
-        var login = this.data[0]["LOGIN"];
-        var password = this.data[0]["PASSWORD"];
-        var group_name = this.data[0]["GROUP_NAME"];
-
 
         if(JSON.stringify(this.data) === '[]'){
             alert("Incorrect login or password");
         }
 
         else{
-            if(this.data[0]["PASSWORD"] === this.state.password){
+            var login = this.data[0]["LOGIN"];
+            var password = this.data[0]["PASSWORD"];
+            var group_name = this.data[0]["GROUP_NAME"];
+
+            if(password === this.state.password){
                 this.props.history.push("/home", {user: login, is_authenticated: true, group_name: group_name});
             }
             else {

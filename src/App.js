@@ -45,9 +45,6 @@ class App extends Component{
                         {...props}
                     />
                 )}/>
-                {/*<Route exact={true} path="/" render={props => (*/}
-                {/*    <Links/>*/}
-                {/*)}/>*/}
             </Switch>
         </Router>
     )

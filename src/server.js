@@ -95,19 +95,6 @@ app.post('/api/register/', function (req, resp){
             resp.send({status: "No success"});
         }
     });
-
-    // if (checkUser(login)){
-    //     console.log("Creating user");
-    //     connection.query("INSERT INTO Users VALUES (?, ?, ?)", [login, password, group_name], function (error, rows, fields) {
-    //         if(!error){
-    //             resp.send("Success");
-    //         }
-    //     });
-    // }
-    // else {
-    //     console.log("Cannot create a user");
-    // }
-
 });
 
 app.listen(1337);
