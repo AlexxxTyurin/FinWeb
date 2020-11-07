@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Router} from 'react-router-dom';
-
-import Routes from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/routes.js';
 
 ReactDOM.render(
   <React.StrictMode>
