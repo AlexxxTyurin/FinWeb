@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import 'reactstrap';
 import {withRouter} from "react-router-dom";
 import {Button, Form, Grid, Segment} from "semantic-ui-react";
-import FormInput from "semantic-ui-react/dist/commonjs/collections/Form/FormInput";
 
 const fetch = require('node-fetch');
 // const history = createBrowserHistory();

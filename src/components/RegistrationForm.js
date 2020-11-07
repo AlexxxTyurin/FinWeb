@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import 'reactstrap';
 import {Button, Form, Grid, Segment} from "semantic-ui-react";
-import FormInput from "semantic-ui-react/dist/commonjs/collections/Form/FormInput";
-import Dropdown from "semantic-ui-react/dist/commonjs/modules/Dropdown";
-import Select from "semantic-ui-react/dist/commonjs/addons/Select";
 
 const groups = [
     {key: "ПИ17-2", value: "ПИ17-2", text: "ПИ17-2"},

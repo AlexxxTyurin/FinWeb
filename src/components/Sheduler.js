@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Timetable from "./Timetable";
-import {Header, Segment} from "semantic-ui-react";
+import {Segment} from "semantic-ui-react";
 
 var num_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
