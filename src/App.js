@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Route, Router, Switch} from 'react-router-dom';
-import LoginForm from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/LoginForm.js';
-import RegistrationForm from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/RegistrationForm.js';
-import Home from "/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/Home.js";
+import LoginForm from './components/LoginForm.js';
+import RegistrationForm from './components/RegistrationForm.js';
+import Home from "./components/Home.js";
+
 import {createBrowserHistory} from 'history';
 import Links from "./components/Links";
 

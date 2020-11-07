@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Scheduler from '/Users/alextyurin/Desktop/WebStorm_projects/app/src/components/Sheduler.js';
+import Scheduler from './Sheduler';
 
 
 class Home extends Component{
