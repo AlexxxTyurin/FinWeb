@@ -13,3 +13,5 @@ deploy:
   project: ./build/
 on:
   branch: master
+env:
+  process.env.CI: false
